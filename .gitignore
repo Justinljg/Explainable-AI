@@ -2,7 +2,11 @@
 data/**
 logs/**
 models/**
+notebooks/tb_logs
+notebooks/temp_link
 notebooks/temp_link/**
+raw_data/**
+raw_data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
