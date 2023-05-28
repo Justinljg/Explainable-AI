@@ -2,9 +2,9 @@
 data/**
 logs/**
 models/**
-notebooks/tb_logs
-notebooks/temp_link
-notebooks/temp_link/**
+tb_logs
+temp_link
+temp_link/**
 raw_data/**
 raw_data
 
@@ -140,4 +140,4 @@ dmypy.json
 
 # Keep all .gitkeep files
 !.gitkeep
-temp_link/person1556_virus_2699.jpeg
+
