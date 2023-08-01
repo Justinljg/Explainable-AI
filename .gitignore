@@ -2,10 +2,9 @@
 data/**
 logs/**
 models/**
+__pycache__
 tb_logs
 temp_link
-temp_link/**
-raw_data/**
 raw_data
 
 # Byte-compiled / optimized / DLL files
