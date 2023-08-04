@@ -6,6 +6,7 @@ import cv2
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
 def get_leaf_folders(path: str) -> List[str]:
     """
     Recursively get a list of all leaf folders (i.e. folders with no subfolders) in a directory and its subdirectories.
@@ -30,7 +31,10 @@ def get_leaf_folders(path: str) -> List[str]:
                 leaf_folders.update(subfolders)
     return sorted(list(leaf_folders))
 
-def create_EIL_from_directory(subfolder:str , sample: int = 500, size: int = 50) -> EasyImageList:
+
+def create_EIL_from_directory(
+    subfolder: str, sample: int = 500, size: int = 50
+) -> EasyImageList:
     """
     Create an EasyImageList object from all image files in a directory and its subdirectories.
 
@@ -48,18 +52,20 @@ def create_EIL_from_directory(subfolder:str , sample: int = 500, size: int = 50)
     EIL.html(sample=sample, size=size)
     return
 
-def plot_counts(df, tar_var):   
-    f,ax=plt.subplots(1,2,figsize=(18,8))
-    df[tar_var].value_counts().plot.pie(autopct='%1.1f%%',ax=ax[0],shadow=True)
+
+def plot_counts(df: pd.DataFrame, tar_var: str) -> None:
+    f, ax = plt.subplots(1, 2, figsize=(18, 8))
+    df[tar_var].value_counts().plot.pie(autopct="%1.1f%%", ax=ax[0], shadow=True)
     ax[0].set_title(tar_var)
-    ax[0].set_ylabel('')
-    sns.countplot(data=df, x= df[tar_var],ax=ax[1])
+    ax[0].set_ylabel("")
+    sns.countplot(data=df, x=df[tar_var], ax=ax[1])
     ax[1].set_title(tar_var)
     plt.show()
 
     return
 
-def plot_img_size(df,tar_var):
+
+def plot_img_size(df: pd.DataFrame, tar_var: str) -> None:
     # Extract the width and height columns from the DataFrame
     widths = df[tar_var].apply(lambda x: x[0])
     heights = df[tar_var].apply(lambda x: x[1])
@@ -74,20 +80,28 @@ def plot_img_size(df,tar_var):
 
     return
 
-def aspect_ratio_plot(df, tar_var:str,num_bins:int,range_min:float, range_max:float):
+
+def aspect_ratio_plot(
+    df: pd.DataFrame, tar_var: str, num_bins: int, range_min: float, range_max: float
+) -> None:
     # Create the histogram
     fig, ax = plt.subplots()
-    n, bins, patches = ax.hist(df[tar_var], bins=num_bins, range=(range_min, range_max), density=False)
+    n, bins, patches = ax.hist(
+        df[tar_var], bins=num_bins, range=(range_min, range_max), density=False
+    )
 
     # Add labels and title
-    ax.set_xlabel('Values')
-    ax.set_ylabel('Frequency')
-    ax.set_title('Histogram of Data')
+    ax.set_xlabel("Values")
+    ax.set_ylabel("Frequency")
+    ax.set_title("Histogram of Data")
 
     # Show the plot
     plt.show()
 
-def canny_edge_plot(df: pd.DataFrame, label_list: list,label_col: str, file_path_col: str) -> None:
+
+def canny_edge_plot(
+    df: pd.DataFrame, label_list: list, label_col: str, file_path_col: str
+) -> None:
     """
     Preprocesses images from a DataFrame containing file paths and labels, and displays 6 random images
     of each label category in a figure with 3 rows and 6 columns.
@@ -100,19 +114,23 @@ def canny_edge_plot(df: pd.DataFrame, label_list: list,label_col: str, file_path
     Returns:
         None
     """
-    fig, axes = plt.subplots(nrows=3, ncols=6, figsize=(15,10), subplot_kw={'xticks':[], 'yticks':[]})
-    
+    fig, axes = plt.subplots(
+        nrows=3, ncols=6, figsize=(15, 10), subplot_kw={"xticks": [], "yticks": []}
+    )
+
     for i, lbl in enumerate(label_list):
-        img_paths = df.loc[df[label_col] == lbl, file_path_col].sample(n=6, random_state=1)
-        
+        img_paths = df.loc[df[label_col] == lbl, file_path_col].sample(
+            n=6, random_state=1
+        )
+
         for j, img_path in enumerate(img_paths):
             img = cv2.imread(img_path)
-            img = cv2.resize(img, (512,512))
+            img = cv2.resize(img, (512, 512))
             img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             img = cv2.Canny(img, 80, 100)
             axes[i][j].imshow(img)
             axes[i][j].set_title(lbl)
-    
+
     fig.tight_layout()
     plt.show()
 
