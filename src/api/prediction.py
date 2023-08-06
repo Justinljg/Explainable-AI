@@ -1,7 +1,7 @@
 import torch
 from torchvision import transforms
 from PIL import Image as PilImage
-from ..train import ImageClassificationModel
+from ..model import ImageClassificationModel
 
 
 def read_imagefile(image):

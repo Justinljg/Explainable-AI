@@ -4,7 +4,7 @@ import requests
 import streamlit as st
 
 def run():
-    LOG_CONFIG = "../conf/base/logging.yaml"
+    LOG_CONFIG = "conf/base/logging.yaml"
 
     logger = logging.getLogger(__name__)
     logger.info("Setting up logging configuration.")
@@ -21,7 +21,7 @@ def run():
     if st.button("Predict"):
         logger.info("Sending Request for Prediction")
         files = {"file": uploaded_file.getvalue()}
-        response = requests.post("http://localhost:8000/predict",files=files)
+        response = requests.post("http://fastapi-server:8000/predict",files=files)
         st.write(response.json())
     return
 

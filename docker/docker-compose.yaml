@@ -1,0 +1,20 @@
+version: "0.0.1"
+
+services:
+  streamlit-ui:
+    build:
+      context: .
+      dockerfile: docker/sl.Dockerfile
+    image: "justinljg/xai_sl:0.0.1"
+    ports:
+      - 8501:8501
+    depends_on:
+      - fastapi-server
+  fastapi-server:
+    build:
+      context: .
+      dockerfile: docker/fastapi.Dockerfile
+    image: "justinljg/xai_fastapi:0.0.1"
+    ports:
+      - 8000:8000
+    volumes: []
