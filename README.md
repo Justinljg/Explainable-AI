@@ -4,6 +4,7 @@ Computer Vision classification for medical baterical and viruses
 <p align="center">
   <img src="images/bacteria.jpeg" />
 </p>
+
 ## Folder Structure
 ```
 .
@@ -120,6 +121,7 @@ There are others image plot counts, the aspect ratios and plot counts also explo
 The MobileNet v2 architecture is based on an inverted residual structure where the input and output of the residual block are thin bottleneck layers opposite to traditional residual models which use expanded representations in the input. MobileNet v2 uses lightweight depthwise convolutions to filter features in the intermediate expansion layer. Additionally, non-linearities in the narrow layers were removed in order to maintain representational power.
 
 <lb>
+
 ### Full Architecture of Model used
 ![Alt text](images/output.svg)
 <img src="images/output.svg">
