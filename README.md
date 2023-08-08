@@ -6,6 +6,7 @@ Computer Vision classification for medical baterical and viruses
 </p>
 
 ## Folder Structure
+
 ```
 .
 ├── conf
@@ -47,12 +48,13 @@ Computer Vision classification for medical baterical and viruses
 ├── LICENSE
 |
 ├── README.md
-``````
+```
+
 ## Standard Usage
 
 <lb>
 
-###Fastapi and Streamlit
+### Fastapi and Streamlit
 
 The Fastapi is dockerised and hosted on port 8000, the Streamlit frontend is dockerised and hosted on port 8501.
 
@@ -65,7 +67,7 @@ docker compose --file docker/docker-compose.yaml up
 
 <lb>
 
-###Training Pipeline
+### Training Pipeline
 For the training pipeline run the python training pipeline file.
 ```
 python src/train.py
@@ -81,7 +83,7 @@ The EDA notebook imports a couple of functions from `src/EDA.py` and `src/EDA_ut
 Before conducting any EDA a portion of setting up the raw data into the Train/Test/Val folders is needed. This is covered in the EDA notebook in `notebooks/EDA.ipynb`. 
 
 
-###Findings
+### Findings
 
 An important finding was that when doing the canny edge plots for the bacteria and virus images it would seems that there were shades blocking the ribs itself.
 
@@ -107,7 +109,7 @@ There are others image plot counts, the aspect ratios and plot counts also explo
 
 
 
-###Mobilenet V2
+### Mobilenet V2
 
 <p align="center">
   <img src="images/mobilenet_v2_1.png" />
