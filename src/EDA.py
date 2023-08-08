@@ -7,6 +7,87 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from PIL import Image
 
+def plot_counts(df: pd.DataFrame, tar_var: str) -> None:
+    """
+    Plot count distributions of a categorical variable in the DataFrame.
+
+    This function generates two subplots: a pie chart and a count plot, to visualize the distribution
+    of a categorical variable within the DataFrame. The pie chart displays the percentage distribution
+    of each category, while the count plot provides a bar representation of category counts.
+
+    Args:
+        df (pd.DataFrame): The DataFrame containing the data to be visualized.
+        tar_var (str): The target categorical variable column name.
+
+    Returns:
+        None
+    """ 
+    f,ax=plt.subplots(1,2,figsize=(18,8))
+    df[tar_var].value_counts().plot.pie(autopct='%1.1f%%',ax=ax[0],shadow=True)
+    ax[0].set_title(tar_var)
+    ax[0].set_ylabel('')
+    sns.countplot(data=df, x= df[tar_var],ax=ax[1])
+    ax[1].set_title(tar_var)
+    plt.show()
+
+    return
+
+def plot_img_size(df: pd.DataFrame, tar_var: str) -> None:
+    """
+    Plot a scatter plot of image sizes.
+
+    This function extracts width and height information from the specified column of the DataFrame,
+    and creates a scatter plot to visualize the relationship between image widths and heights.
+
+    Args:
+        df (pd.DataFrame): The DataFrame containing the image size data.
+        tar_var (str): The target column containing image size information.
+
+    Returns:
+        None
+    """
+    # Extract the width and height columns from the DataFrame
+    widths = df[tar_var].apply(lambda x: x[0])
+    heights = df[tar_var].apply(lambda x: x[1])
+
+    # Create a scatter plot of the image sizes
+    plt.scatter(widths, heights)
+    plt.xlabel("Width")
+    plt.ylabel("Height")
+    plt.title("Image Sizes")
+    plt.tight_layout()
+    plt.show()
+
+    return
+
+def aspect_ratio_plot(df: pd.DataFrame, tar_var: str, num_bins: int, range_min: float, range_max: float) -> None:
+    """
+    Plot a histogram of data values within a specified range.
+
+    This function generates a histogram plot of the data values from the specified column of the DataFrame.
+    The number of bins and the range of values are adjustable to customize the appearance of the histogram.
+
+    Args:
+        df (pd.DataFrame): The DataFrame containing the data to be visualized.
+        tar_var (str): The target column containing the data values.
+        num_bins (int): The number of bins for the histogram.
+        range_min (float): The minimum value for the histogram range.
+        range_max (float): The maximum value for the histogram range.
+
+    Returns:
+        None
+    """
+    # Create the histogram
+    fig, ax = plt.subplots()
+    n, bins, patches = ax.hist(df[tar_var], bins=num_bins, range=(range_min, range_max), density=False)
+
+    # Add labels and title
+    ax.set_xlabel('Values')
+    ax.set_ylabel('Frequency')
+    ax.set_title('Histogram of Data')
+
+    # Show the plot
+    plt.show()
 
 def get_leaf_folders(path: str) -> List[str]:
     """

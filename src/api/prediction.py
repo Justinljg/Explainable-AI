@@ -3,7 +3,6 @@ from torchvision import transforms
 from PIL import Image as PilImage
 from ..model import ImageClassificationModel
 
-
 def read_imagefile(image):
     img = PilImage.open(image).convert('RGB')
 
