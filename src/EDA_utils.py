@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from PIL import Image
-from train import get_data_use
+from .train import get_data_use
 
 def prepare_df(path: str) -> pd.DataFrame:
     """

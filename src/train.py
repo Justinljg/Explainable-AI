@@ -16,7 +16,7 @@ from PIL import Image as PilImage
 import lightning as pl
 from lightning.pytorch.loggers import TensorBoardLogger
 
-from model import ImageClassificationModel
+from .model import ImageClassificationModel
 
 def get_label_onehot(file_path: str) -> str or None:
     """
