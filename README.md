@@ -125,8 +125,10 @@ The MobileNet v2 architecture is based on an inverted residual structure where t
 <lb>
 
 ### Full Architecture of Model used
-![Alt text](images/output.svg)
+
+<p align="center">
 <img src="images/output.svg">
+</p>
 
 ## Grad_Cam
 
