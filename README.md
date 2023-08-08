@@ -148,7 +148,9 @@ After the model is trained on the data with varying x-ray images, the model look
 <p align="center">
   <img src="images/gradcam3.png" />
 </p>
+
 ### Bacteria Trained Model
+
 <p align="center">
   <img src="images/gradcam4.png" />
 </p>
