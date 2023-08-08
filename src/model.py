@@ -12,7 +12,6 @@ class ImageClassificationModel(pl.LightningModule):
         super().__init__()
         self.mobilenet = models.mobilenet_v2(pretrained=True)
         num_features = self.mobilenet.classifier[1].in_features
-
         # Add more layers
         self.layers = nn.Sequential(
             nn.Linear(num_features, 256),
@@ -74,6 +73,6 @@ class ImageClassificationModel(pl.LightningModule):
                 "frequency": 1,  # Apply LR scheduler every epoch
             },
         }
-
-true_labels = []
-pred_labels = []
+    
+true_labels=[]
+pred_labels=[]
